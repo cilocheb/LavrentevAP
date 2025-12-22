@@ -154,3 +154,37 @@ if __name__ == "__main__":
     factory_dev = EmployeeFactory.create_employee("developer", emp_id=5, name="Олег", department="Dev", base_salary=5500, tech_stack=["Docker"], level="middle")
     print(factory_dev.get_info())
 
+if __name__ == "__main__":
+    # Создание сотрудников разных типов
+    employee = RegularEmployee(1, "Иван Иванов", "Бухгалтерия", 50000)
+    manager = Manager(2, "Петр Петров", "Менеджмент", 70000, 20000)
+    developer = Developer(3, "Алексей Сидоров", "IT", 60000, ["Python", "Django", "PostgreSQL"], "middle")
+    salesperson = Salesperson(4, "Анна Козлова", "Продажи", 40000, 0.1, 150000)
+    
+    # Список всех сотрудников (полиморфизм)
+    employees = [employee, manager, developer, salesperson]
+    
+    print("=== ИНФОРМАЦИЯ О СОТРУДНИКАХ ===")
+    for emp in employees:
+        print(emp.get_info())
+        print()
+    
+    print("=== ЗАРПЛАТЫ ===")
+    total_salary = sum(emp.calculate_salary() for emp in employees)
+    for emp in employees:
+        print(f"{emp.name}: {emp.calculate_salary():,.0f} руб.")
+    print(f"Общая зарплата: {total_salary:,.0f} руб.")
+    
+    print("\n=== ФАБРИЧНЫЙ МЕТОД ===")
+    factory_dev = EmployeeFactory.create_employee(
+        "developer", 
+        emp_id=5, 
+        name="Мария Петрова", 
+        department="Backend", 
+        base_salary=65000, 
+        tech_stack=["JavaScript", "Node.js"], 
+        level="senior"
+    )
+    print(factory_dev.get_info())
+    
+
