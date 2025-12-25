@@ -1,0 +1,101 @@
+PS C:\Users\Asus Game\Desktop\lab-testing> python -m black *.py
+All done! 
+9 files left unchanged.
+PS C:\Users\Asus Game\Desktop\lab-testing> python -m pylint *.py
+************* Module conftest
+conftest.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+conftest.py:6:0: C0116: Missing function or method docstring (missing-function-docstring)
+conftest.py:11:0: C0116: Missing function or method docstring (missing-function-docstring)
+conftest.py:16:0: C0116: Missing function or method docstring (missing-function-docstring)
+conftest.py:21:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module employee
+employee.py:16:4: R0913: Too many arguments (6/5) (too-many-arguments)
+employee.py:16:4: R0917: Too many positional arguments (6/5) (too-many-positional-arguments)
+employee.py:75:4: R0913: Too many arguments (6/5) (too-many-arguments)
+employee.py:75:4: R0917: Too many positional arguments (6/5) (too-many-positional-arguments)
+employee.py:106:4: R0913: Too many arguments (7/5) (too-many-arguments)
+employee.py:106:4: R0917: Too many positional arguments (7/5) (too-many-positional-arguments)
+employee.py:152:4: R0913: Too many arguments (7/5) (too-many-arguments)
+employee.py:152:4: R0917: Too many positional arguments (7/5) (too-many-positional-arguments)
+************* Module patterns
+patterns.py:61:0: R0902: Too many instance attributes (10/7) (too-many-instance-attributes)
+patterns.py:218:8: C0415: Import outside toplevel (employee.Manager, employee.Developer, employee.Salesperson) (import-outside-toplevel)
+patterns.py:320:8: W0107: Unnecessary pass statement (unnecessary-pass)
+patterns.py:332:8: W0107: Unnecessary pass statement (unnecessary-pass)
+patterns.py:341:8: W0107: Unnecessary pass statement (unnecessary-pass)
+************* Module project
+project.py:9:4: R0913: Too many arguments (6/5) (too-many-arguments)
+project.py:9:4: R0917: Too many positional arguments (6/5) (too-many-positional-arguments)
+project.py:20:4: C0116: Missing function or method docstring (missing-function-docstring)
+project.py:23:4: C0116: Missing function or method docstring (missing-function-docstring)
+project.py:26:4: C0116: Missing function or method docstring (missing-function-docstring)
+project.py:29:4: C0116: Missing function or method docstring (missing-function-docstring)
+project.py:32:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module strategies
+strategies.py:19:8: W0107: Unnecessary pass statement (unnecessary-pass)
+strategies.py:6:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+strategies.py:22:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+strategies.py:37:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+strategies.py:52:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+strategies.py:69:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+
+------------------------------------------------------------------
+Your code has been rated at 9.22/10 (previous run: 9.22/10, +0.00)
+
+PS C:\Users\Asus Game\Desktop\lab-testing> python -m mypy . --ignore-missing-imports
+repositories.py:60: error: Need type annotation for "employees" (hint: "employees: dict[<type>, <type>] = ...")  [var-annotated]
+employee.py:22: error: Incompatible default for argument "salary_strategy" (default has type "None", argument has type "SalaryCalculationStrategy")  [assignment]
+employee.py:22: note: PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+employee.py:22: note: Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade your codebase
+employee.py:53: error: Argument 1 of "__eq__" is incompatible with supertype "builtins.object"; supertype defines the argument type as "object"  [override]
+employee.py:53: note: This violates the Liskov substitution principle
+employee.py:53: note: See https://mypy.readthedocs.io/en/stable/common_issues.html#incompatible-overrides
+employee.py:53: note: It is recommended for "__eq__" to work with arbitrary objects, for example:
+employee.py:53: note:     def __eq__(self, other: object) -> bool:
+employee.py:53: note:         if not isinstance(other, Employee):
+employee.py:53: note:             return NotImplemented
+employee.py:53: note:         return <logic to compare two Employee instances>
+Found 3 errors in 2 files (checked 15 source files)
+PS C:\Users\Asus Game\Desktop\lab-testing> python -m pytest tests/ -v
+=============================================== test session starts ===============================================
+platform win32 -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\Asus Game\AppData\Local\Python\pythoncore-3.14-64\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Asus Game\Desktop\lab-testing
+collected 34 items
+
+tests/test_department.py::TestDepartment::test_add_employee PASSED                                           [  2%]
+tests/test_department.py::TestDepartment::test_department_len PASSED                                         [  5%]
+tests/test_department.py::TestDepartment::test_department_getitem PASSED                                     [  8%]
+tests/test_department.py::TestDepartment::test_department_contains PASSED                                    [ 11%]
+tests/test_department.py::TestDepartment::test_department_iteration PASSED                                   [ 14%]
+tests/test_department.py::TestDepartment::test_calculate_total_salary_polymorphic PASSED                     [ 17%]
+tests/test_department.py::TestEmployeeComparison::test_employee_equality PASSED                              [ 20%]
+tests/test_department.py::TestEmployeeComparison::test_employee_less_than PASSED                             [ 23%]
+tests/test_department.py::TestEmployeeComparison::test_employee_addition PASSED                              [ 26%]
+tests/test_employee.py::TestEmployeeCreation::test_employee_creation_valid_data PASSED                       [ 29%]
+tests/test_employee.py::TestEmployeeValidation::test_invalid_id_negative PASSED                              [ 32%]
+tests/test_employee.py::TestEmployeeValidation::test_empty_name PASSED                                       [ 35%]
+tests/test_employee.py::TestEmployeeValidation::test_negative_salary PASSED                                  [ 38%]
+tests/test_employee.py::TestEmployeeMethods::test_calculate_salary PASSED                                    [ 41%]
+tests/test_employee.py::TestEmployeeMethods::test_str_representation PASSED                                  [ 44%]
+tests/test_employees_hierarchy.py::TestManager::test_manager_salary PASSED                                   [ 47%]
+tests/test_employees_hierarchy.py::TestManager::test_manager_get_info PASSED                                 [ 50%]
+tests/test_employees_hierarchy.py::TestDeveloper::test_developer_salary_by_level[junior-5000] PASSED         [ 52%]
+tests/test_employees_hierarchy.py::TestDeveloper::test_developer_salary_by_level[middle-7500] PASSED         [ 55%]
+tests/test_employees_hierarchy.py::TestDeveloper::test_developer_salary_by_level[senior-10000] PASSED        [ 58%]
+tests/test_employees_hierarchy.py::TestDeveloper::test_developer_add_skill PASSED                            [ 61%]
+tests/test_employees_hierarchy.py::TestSalesperson::test_salesperson_salary PASSED                           [ 64%]
+tests/test_employees_hierarchy.py::TestPolymorphism::test_polymorphic_calculation PASSED                     [ 67%]
+tests/test_patterns.py::TestSingleton::test_singleton_same_instance PASSED                                   [ 70%]
+tests/test_patterns.py::TestBuilder::test_employee_builder PASSED                                            [ 73%]
+tests/test_patterns.py::TestDecorator::test_bonus_decorator PASSED                                           [ 76%]
+tests/test_patterns.py::TestRepository::test_repository_add_and_find PASSED                                  [ 79%]
+tests/test_project_company.py::TestCompany::test_add_department PASSED                                       [ 82%]
+tests/test_project_company.py::TestCompany::test_remove_empty_department PASSED                              [ 85%]
+tests/test_project_company.py::TestCompany::test_cannot_delete_department_with_employees PASSED              [ 88%]
+tests/test_project_company.py::TestCompany::test_find_employee PASSED                                        [ 91%]
+tests/test_project_company.py::TestCompany::test_complex_company_structure PASSED                            [ 94%]
+tests/test_project_company.py::TestProject::test_add_team_member PASSED                                      [ 97%]
+tests/test_project_company.py::TestProject::test_project_total_salary PASSED                                 [100%]
+
+=============================================== 34 passed in 0.05s =================================================
