@@ -1,0 +1,42 @@
+================================================= test session starts =================================================
+platform win32 -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\Asus Game\AppData\Local\Python\pythoncore-3.14-64\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Asus Game\Desktop\lab-testing
+collected 34 items
+
+tests/test_department.py::TestDepartment::test_add_employee PASSED                                               [  2%]
+tests/test_department.py::TestDepartment::test_department_len PASSED                                             [  5%]
+tests/test_department.py::TestDepartment::test_department_getitem PASSED                                         [  8%]
+tests/test_department.py::TestDepartment::test_department_contains PASSED                                        [ 11%]
+tests/test_department.py::TestDepartment::test_department_iteration PASSED                                       [ 14%]
+tests/test_department.py::TestDepartment::test_calculate_total_salary_polymorphic PASSED                         [ 17%]
+tests/test_department.py::TestEmployeeComparison::test_employee_equality PASSED                                  [ 20%]
+tests/test_department.py::TestEmployeeComparison::test_employee_less_than PASSED                                 [ 23%]
+tests/test_department.py::TestEmployeeComparison::test_employee_addition PASSED                                  [ 26%]
+tests/test_employee.py::TestEmployeeCreation::test_employee_creation_valid_data PASSED                           [ 29%]
+tests/test_employee.py::TestEmployeeValidation::test_invalid_id_negative PASSED                                  [ 32%]
+tests/test_employee.py::TestEmployeeValidation::test_empty_name PASSED                                           [ 35%]
+tests/test_employee.py::TestEmployeeValidation::test_negative_salary PASSED                                      [ 38%]
+tests/test_employee.py::TestEmployeeMethods::test_calculate_salary PASSED                                        [ 41%]
+tests/test_employee.py::TestEmployeeMethods::test_str_representation PASSED                                      [ 44%]
+tests/test_employees_hierarchy.py::TestManager::test_manager_salary PASSED                                       [ 47%]
+tests/test_employees_hierarchy.py::TestManager::test_manager_get_info PASSED                                     [ 50%]
+tests/test_employees_hierarchy.py::TestDeveloper::test_developer_salary_by_level[junior-5000] PASSED             [ 52%]
+tests/test_employees_hierarchy.py::TestDeveloper::test_developer_salary_by_level[middle-7500] PASSED             [ 55%]
+tests/test_employees_hierarchy.py::TestDeveloper::test_developer_salary_by_level[senior-10000] PASSED            [ 58%]
+tests/test_employees_hierarchy.py::TestDeveloper::test_developer_add_skill PASSED                                [ 61%]
+tests/test_employees_hierarchy.py::TestSalesperson::test_salesperson_salary PASSED                               [ 64%]
+tests/test_employees_hierarchy.py::TestPolymorphism::test_polymorphic_calculation PASSED                         [ 67%]
+tests/test_patterns.py::TestSingleton::test_singleton_same_instance PASSED                                       [ 70%]
+tests/test_patterns.py::TestBuilder::test_employee_builder PASSED                                                [ 73%]
+tests/test_patterns.py::TestDecorator::test_bonus_decorator PASSED                                               [ 76%]
+tests/test_patterns.py::TestRepository::test_repository_add_and_find PASSED                                      [ 79%]
+tests/test_project_company.py::TestCompany::test_add_department PASSED                                           [ 82%]
+tests/test_project_company.py::TestCompany::test_remove_empty_department PASSED                                  [ 85%]
+tests/test_project_company.py::TestCompany::test_cannot_delete_department_with_employees PASSED                  [ 88%]
+tests/test_project_company.py::TestCompany::test_find_employee PASSED                                            [ 91%]
+tests/test_project_company.py::TestCompany::test_complex_company_structure PASSED                                [ 94%]
+tests/test_project_company.py::TestProject::test_add_team_member PASSED                                          [ 97%]
+tests/test_project_company.py::TestProject::test_project_total_salary PASSED                                     [100%]
+
+================================================= 34 passed in 0.08s ==================================================
